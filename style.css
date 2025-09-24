@@ -139,3 +139,6 @@
 .list-item-exit {
     animation: fadeOut 0.3s ease forwards;
 }
+/* Change Starts Here: Removed extra closing brace */
+/* } */
+/* Change Ends Here */
