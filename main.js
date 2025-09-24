@@ -25,7 +25,8 @@ const app = {
                 this.updateCurrentMonthDisplay();
                 this.populateAnalysisSelectors();
                 
-                const now = new new Date();
+                // FIX: Corrected 'new new Date()' to 'new Date()'
+                const now = new Date();
                 now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
                 document.getElementById('entry-date').value = now.toISOString().slice(0, 16);
                 
@@ -34,12 +35,13 @@ const app = {
 
             // --- FIREBASE INTEGRATION ---
             initFirebase() {
-                // User's web app's Firebase configuration
+                 // SECURITY NOTE: In a real production application, these keys should not be exposed in the client-side code.
+                 // Use environment variables and secure backend functions or Firebase App Check to protect your credentials.
                 const firebaseConfig = {
                     apiKey: "AIzaSyBT54tGJ81-cORYsF95zIETzviiortovBI",
                     authDomain: "salary-app-18a5a.firebaseapp.com",
                     projectId: "salary-app-18a5a",
-                    storageBucket: "salary-app-18a5a.appspot.com",
+                    storageBucket: "salary-app-18a5a.firebasestorage.app",
                     messagingSenderId: "24176664497",
                     appId: "1:24176664497:web:9fa2f7996f3d3ae78aa790",
                     measurementId: "G-S5BBGE4G4T"
@@ -83,8 +85,14 @@ const app = {
                     if (doc.exists) {
                         this.state.data = doc.data();
                         // Ensure defaults for backward compatibility
+                        if (!this.state.data.entries) {
+                            this.state.data.entries = [];
+                        }
                         if (!this.state.data.incomeTypes) {
                             this.state.data.incomeTypes = ['Basic Salary', 'Service Charge', 'Tip'];
+                        }
+                         if (!this.state.data.expenseCategories) {
+                            this.state.data.expenseCategories = ['Food', 'Transport', 'Bills', 'Entertainment', 'Other'];
                         }
                         if (!this.state.data.settings) {
                             this.state.data.settings = { currencySymbol: 'Rs.' };
