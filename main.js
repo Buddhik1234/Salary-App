@@ -139,17 +139,6 @@ const app = {
                 this.updateActiveView();
                 this.updateActiveNav();
                 
-                // Change Starts Here: Manage visibility of Floating Action Buttons
-                const fabContainer = document.getElementById('fab-container');
-                if (fabContainer) {
-                    if (this.state.currentView === 'dashboard') {
-                        fabContainer.style.display = 'flex';
-                    } else {
-                        fabContainer.style.display = 'none';
-                    }
-                }
-                // Change Ends Here
-                
                 const now = new Date();
                 const currentMonthEntries = this.getEntriesForPeriod(now.getMonth(), now.getFullYear());
 
