@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <div id="app" class="max-w-lg mx-auto pb-24">
+        <header class="p-4 text-center">
+            <h1 class="text-2xl font-bold text-white" id="header-title">Dashboard</h1>
+            <div class="flex justify-center items-center gap-2">
+                <p class="text-sm text-gray-400" id="current-month-display"></p>
+                <p id="sync-status" class="text-xs text-gray-500"></p>
+            </div>
+        </header>
+
+        <main class="main-container px-4">
+            <div id="settings-view" class="view">
+                <div class="glass-card p-4">
+                    <h3 class="text-xl font-semibold mb-4">Settings</h3>
+                    <div class="space-y-4">
+                       <div>
+                           <label for="currency-symbol" class="block mb-1 text-sm">Currency Symbol</label>
+                           <input type="text" id="currency-symbol" class="bg-gray-800 border border-gray-700 rounded-lg px-3 py-2 w-full">
+                       </div>
+                       <button onclick="app.saveSettings()" class="w-full btn-primary py-2 rounded-lg">Save Settings</button>
+                       
+                       <hr class="border-gray-700">
+
+                       <div>
+                            <h4 class="text-lg font-semibold mb-2">Data Management</h4>
+                            <p class="text-sm text-gray-400 text-center">Your data is automatically backed up and synced to the cloud. ✨</p>
+                       </div>
+                       
+                       <hr class="border-gray-700">
+
+                       <button onclick="app.resetAllData()" class="w-full bg-red-800 hover:bg-red-700 text-white py-2 rounded-lg">Reset All Data</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        </div>
+    
+    <div id="toast-container"></div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore-compat.js"></script>
+    
+    <script src="main.js" defer></script>    
+    <script>
+    // Check if the browser supports service workers
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        // Register the service worker file
+        navigator.serviceWorker.register('/sw.js')
+          .then(registration => {
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          })
+          .catch(error => {
+            console.log('ServiceWorker registration failed: ', error);
+          });
+      });
+    }
+    </script>
+
+</body>
+</html>
