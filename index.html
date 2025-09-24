@@ -51,8 +51,8 @@
                      <h3 class="text-lg font-semibold mb-2">Add New Income Type</h3>
                      <div class="flex gap-2">
                          <input type="text" id="new-income-type-input" placeholder="e.g., Bonus" class="flex-grow bg-gray-800 border border-gray-700 rounded-lg px-3 py-2">
-                         <button onclick="app.addIncomeType()" class="btn-primary px-4 rounded-lg">Add</button>
-                     </div>
+                         <button onclick="app.addIncomeType()" class="btn-primary px-4 rounded-lg flex-shrink-0">Add</button>
+                         </div>
                 </div>
                 <div id="income-sections-container"></div>
             </div>
@@ -66,8 +66,8 @@
                      <h3 class="text-lg font-semibold mb-2">Add New Expense Category</h3>
                      <div class="flex gap-2">
                          <input type="text" id="new-expense-category-input" placeholder="e.g., Groceries" class="flex-grow bg-gray-800 border border-gray-700 rounded-lg px-3 py-2">
-                         <button onclick="app.addExpenseCategory()" class="btn-primary px-4 rounded-lg">Add</button>
-                     </div>
+                         <button onclick="app.addExpenseCategory()" class="btn-primary px-4 rounded-lg flex-shrink-0">Add</button>
+                         </div>
                 </div>
                 <div id="expense-list-container"></div>
             </div>
@@ -138,11 +138,10 @@
         </div>
     </div>
 
-    <div class="fixed bottom-24 right-4 z-20 flex flex-col gap-3">
+    <div id="fab-container" class="fixed bottom-24 right-4 z-20 flex flex-col gap-3">
         <button onclick="app.showAddModal('expense')" class="w-14 h-14 rounded-full bg-red-600 text-white flex items-center justify-center shadow-lg text-2xl font-light">+</button>
         <button onclick="app.showAddModal('income')" class="w-14 h-14 rounded-full bg-green-600 text-white flex items-center justify-center shadow-lg text-2xl font-light">+</button>
     </div>
-    
     <div id="toast-container"></div>
     
     <nav class="fixed bottom-0 left-0 right-0 max-w-lg mx-auto h-20 glass-card border-t-0 rounded-t-none z-30 flex justify-around items-center">
@@ -151,11 +150,11 @@
             <span class="text-xs mt-1">Home</span>
         </button>
         <button onclick="app.changeView('incomes')" class="nav-item flex flex-col items-center justify-center text-gray-400">
-             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01"></path></svg>
+             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
             <span class="text-xs mt-1">Incomes</span>
         </button>
         <button onclick="app.changeView('expenses')" class="nav-item flex flex-col items-center justify-center text-gray-400">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v.01M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
             <span class="text-xs mt-1">Expenses</span>
         </button>
         <button onclick="app.changeView('analysis')" class="nav-item flex flex-col items-center justify-center text-gray-400">
